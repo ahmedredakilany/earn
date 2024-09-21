@@ -33,7 +33,7 @@
             position: fixed;
             z-index: 999999;
             background-color: #000000;
-            background-image: url(imgs/عمان.png);
+            background-image: url(imgs/oman.png);
             /* الصورة */
             left: 0;
             background-repeat: no-repeat;
@@ -47,41 +47,41 @@
         @keyframes pulse-in-out {
             0% {
                 opacity: 1;
-                transform: scale(0.5);
+                transform: translateY(-100px);
             }
 
             25% {
                 opacity: 1;
-                transform: scale(1.1);
+                transform: translateY(-200px);
             }
 
             50% {
                 opacity: 0.8;
-                transform: scale(1);
+                transform: translateY(-300px);
             }
 
             75% {
                 opacity: 0.5;
-                transform: scale(1.2);
+                transform: translateY(-450px);
             }
 
             100% {
                 opacity: 0;
-                transform: scale(0.1);
+                transform: translateY(-10000px);
             }
         }
 
         @keyframes background-change {
             0% {
-                background-color: rgba(255, 255, 255, 0.1);
+                background-color: transparent;
             }
 
             50% {
-                background-color: rgba(255, 255, 255, 0.3);
+                background-color: transparent;
             }
 
             100% {
-                background-color: rgba(255, 255, 255, 0);
+                background-color: transparent;
             }
         }
     </style>
@@ -92,19 +92,29 @@
         <button id="lang-switch">التبديل إلى الإنجليزية</button>
     </div>
     <section class="main">
-
         <div class="container">
+            <div class="img">
+
+                <img class="flag" src="imgs/عمان.png" alt="">
+            </div>
+
             <p class="head-sub" id="page-title">
-                الكويت
+                عمان
             </p>
 
             <div class="choice-1">
                 <div class="select-container">
                     <select id="service-provider" title="name">
-                        <option value="volvo">مزود الخدمة</option>
-                        <option value="saab">اتصالات</option>
-                        <option value="mercedes">إم تي أي سي تي</option>
-                        <option value="audi">وركز</option>
+                        <option value="provider">مزود الخدمة</option>
+                        <option value="omantel">عمانتل</option>
+                        <option value="ooredoo">أوريدو</option>
+                        <option value="renna">رنا</option>
+                        <option value="dalkom">دالكم</option>
+                        <option value="salah">صلاح</option>
+                        <option value="data">بيانات</option>
+                        <option value="mawa">موا</option>
+                        <option value="sultan">سلطان</option>
+                        <option value="haya">هيا</option>
                     </select>
                 </div>
             </div>
@@ -128,10 +138,16 @@
                 submitButton: "Register",
                 switchButton: "Switch to Arabic",
                 options: {
-                    volvo: "Service Provider",
-                    saab: "Etisalat",
-                    mercedes: "Em-T ICT",
-                    audi: "Workz"
+                    provider: "Service Provider",
+                    omantel: "Omantel",
+                    ooredoo: "Ooredoo",
+                    renna: "Renna",
+                    dalkom: "Dalkom",
+                    salah: "Salah",
+                    data: "Data",
+                    mawa: "Mawa",
+                    sultan: "Sultan",
+                    haya: "Haya"
                 }
             },
             ar: {
@@ -141,10 +157,16 @@
                 submitButton: "تسجيل",
                 switchButton: "التبديل إلى الإنجليزية",
                 options: {
-                    volvo: "مزود الخدمة",
-                    saab: "اتصالات",
-                    mercedes: "إم تي أي سي تي",
-                    audi: "وركز"
+                    provider: "مزود الخدمة",
+                    omantel: "عمانتل",
+                    ooredoo: "أوريدو",
+                    renna: "رنا",
+                    dalkom: "دالكم",
+                    salah: "صلاح",
+                    data: "بيانات",
+                    mawa: "موا",
+                    sultan: "سلطان",
+                    haya: "هيا"
                 }
             }
         };
@@ -162,10 +184,16 @@
 
             // تحديث النصوص على الصفحة
             document.getElementById('page-title').innerText = lang.title;
-            document.getElementById('service-provider').options[0].innerText = lang.options.volvo;
-            document.getElementById('service-provider').options[1].innerText = lang.options.saab;
-            document.getElementById('service-provider').options[2].innerText = lang.options.mercedes;
-            document.getElementById('service-provider').options[3].innerText = lang.options.audi;
+            document.getElementById('service-provider').options[0].innerText = lang.options.provider;
+            document.getElementById('service-provider').options[1].innerText = lang.options.omantel;
+            document.getElementById('service-provider').options[2].innerText = lang.options.ooredoo;
+            document.getElementById('service-provider').options[3].innerText = lang.options.renna;
+            document.getElementById('service-provider').options[4].innerText = lang.options.dalkom;
+            document.getElementById('service-provider').options[5].innerText = lang.options.salah;
+            document.getElementById('service-provider').options[6].innerText = lang.options.data;
+            document.getElementById('service-provider').options[7].innerText = lang.options.mawa;
+            document.getElementById('service-provider').options[8].innerText = lang.options.sultan;
+            document.getElementById('service-provider').options[9].innerText = lang.options.haya;
             document.getElementById('phone-number').placeholder = lang.phoneNumber;
             document.getElementById('submit-btn').value = lang.submitButton;
             document.getElementById('lang-switch').innerText = lang.switchButton;

@@ -12,7 +12,6 @@
             background: -moz-radial-gradient(circle, rgba(179, 224, 247, 1) 0%, rgba(65, 181, 242, 1) 79%);
             background: -webkit-radial-gradient(circle, rgba(179, 224, 247, 1) 0%, rgba(65, 181, 242, 1) 79%);
             background: radial-gradient(circle, rgba(179, 224, 247, 1) 0%, rgba(65, 181, 242, 1) 79%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b3e0f7", endColorstr="#41b5f2", GradientType=1);
             height: 100vh;
         }
 
@@ -30,13 +29,12 @@
             top: 0;
             position: fixed;
             z-index: 999999;
-            background-color: #e61818;
+            background-color: #ffffff;
             background-image: url(imgs/kwiet.png);
-            /* الصورة */
             left: 0;
             background-repeat: no-repeat;
             background-position: center;
-            background-size: auto;
+            background-size: contain;
             animation: pulse-in-out 2.5s ease-in-out forwards, background-change 2s ease-in forwards;
             transform: scale(0);
             border: none;
@@ -45,41 +43,41 @@
         @keyframes pulse-in-out {
             0% {
                 opacity: 1;
-                transform: scale(0.5);
+                transform: translateY(-100px);
             }
 
             25% {
                 opacity: 1;
-                transform: scale(1.1);
+                transform: translateY(-200px);
             }
 
             50% {
                 opacity: 0.8;
-                transform: scale(1);
+                transform: translateY(-300px);
             }
 
             75% {
                 opacity: 0.5;
-                transform: scale(1.2);
+                transform: translateY(-450px);
             }
 
             100% {
                 opacity: 0;
-                transform: scale(0.1);
+                transform: translateY(-10000px);
             }
         }
 
         @keyframes background-change {
             0% {
-                background-color: rgba(255, 255, 255, 0.1);
+                background-color: transparent;
             }
 
             50% {
-                background-color: rgba(255, 255, 255, 0.3);
+                background-color: transparent;
             }
 
             100% {
-                background-color: rgba(255, 255, 255, 0);
+                background-color: transparent;
             }
         }
     </style>
@@ -90,19 +88,25 @@
         <button id="lang-switch">التبديل إلى الإنجليزية</button>
     </div>
     <section class="main">
-
         <div class="container">
-            <p class="head-sub" id="page-title">
-                الكويت
-            </p>
+            <div class="img">
+                <img class="flag" src="imgs/الكويت.png" alt="">
+            </div>
+            <p class="head-sub" id="page-title">الكويت</p>
 
             <div class="choice-1">
                 <div class="select-container">
                     <select id="service-provider" title="name">
-                        <option value="volvo">مزود الخدمة</option>
-                        <option value="saab">اتصالات</option>
-                        <option value="mercedes">إم تي أي سي تي</option>
-                        <option value="audi">وركز</option>
+                        <option value="provider">مزود الخدمة</option>
+                        <option value="zain">زين</option>
+                        <option value="omantel">عمانتل</option>
+                        <option value="ooredoo">أوريدو</option>
+                        <option value="stc">STC</option>
+                        <option value="viva">فيفا</option>
+                        <option value="data">بيانات</option>
+                        <option value="kems">KEMS</option>
+                        <option value="mobicom">موبايكوم</option>
+                        <option value="du">دو</option>
                     </select>
                 </div>
             </div>
@@ -112,8 +116,6 @@
             <div class="choice-1">
                 <input type="button" id="submit-btn" value="تسجيل">
             </div>
-
-
         </div>
     </section>
 
@@ -126,10 +128,16 @@
                 submitButton: "Register",
                 switchButton: "Switch to Arabic",
                 options: {
-                    volvo: "Service Provider",
-                    saab: "Etisalat",
-                    mercedes: "Em-T ICT",
-                    audi: "Workz"
+                    provider: "Service Provider",
+                    zain: "Zain",
+                    omantel: "Omantel",
+                    ooredoo: "Ooredoo",
+                    stc: "STC",
+                    viva: "Viva",
+                    data: "Data",
+                    kems: "KEMS",
+                    mobicom: "Mobicom",
+                    du: "Du"
                 }
             },
             ar: {
@@ -139,10 +147,16 @@
                 submitButton: "تسجيل",
                 switchButton: "التبديل إلى الإنجليزية",
                 options: {
-                    volvo: "مزود الخدمة",
-                    saab: "اتصالات",
-                    mercedes: "إم تي أي سي تي",
-                    audi: "وركز"
+                    provider: "مزود الخدمة",
+                    zain: "زين",
+                    omantel: "عمانتل",
+                    ooredoo: "أوريدو",
+                    stc: "STC",
+                    viva: "فيفا",
+                    data: "بيانات",
+                    kems: "KEMS",
+                    mobicom: "موبايكوم",
+                    du: "دو"
                 }
             }
         };
@@ -159,11 +173,18 @@
             const lang = translations[currentLang];
 
             // تحديث النصوص على الصفحة
-            document.getElementById('page-title').innerText = lang.title;
-            document.getElementById('service-provider').options[0].innerText = lang.options.volvo;
-            document.getElementById('service-provider').options[1].innerText = lang.options.saab;
-            document.getElementById('service-provider').options[2].innerText = lang.options.mercedes;
-            document.getElementById('service-provider').options[3].innerText = lang.options.audi;
+            document.title = lang.title; // تحديث عنوان الصفحة
+            document.getElementById('page-title').innerText = lang.title; // تحديث عنوان القسم
+            document.getElementById('service-provider').options[0].innerText = lang.options.provider;
+            document.getElementById('service-provider').options[1].innerText = lang.options.zain;
+            document.getElementById('service-provider').options[2].innerText = lang.options.omantel;
+            document.getElementById('service-provider').options[3].innerText = lang.options.ooredoo;
+            document.getElementById('service-provider').options[4].innerText = lang.options.stc;
+            document.getElementById('service-provider').options[5].innerText = lang.options.viva;
+            document.getElementById('service-provider').options[6].innerText = lang.options.data;
+            document.getElementById('service-provider').options[7].innerText = lang.options.kems;
+            document.getElementById('service-provider').options[8].innerText = lang.options.mobicom;
+            document.getElementById('service-provider').options[9].innerText = lang.options.du;
             document.getElementById('phone-number').placeholder = lang.phoneNumber;
             document.getElementById('submit-btn').value = lang.submitButton;
             document.getElementById('lang-switch').innerText = lang.switchButton;
@@ -174,7 +195,6 @@
     </script>
 
     <script src="js/script.js"></script>
-
 </body>
 
 </html>
