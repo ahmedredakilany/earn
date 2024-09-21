@@ -38,6 +38,10 @@
     }
   }
 }
+a {
+  width: 100%;
+  text-align: center;
+}
 
 .main .container .choice li:hover {
   background-color: rgb(43, 86, 107);
@@ -72,7 +76,7 @@ select {
   border: 2px solid #fff; /* الحدود */
   border-radius: 25px; /* جعل الحواف مستديرة */
   background-color: #fff; /* لون خلفية القائمة */
- /* دعم إخفاء السهم لمتصفحات Firefox */
+  /* دعم إخفاء السهم لمتصفحات Firefox */
   font-size: 16px; /* حجم الخط */
   color: #86c5e0; /* لون النص */
   text-align: right; /* محاذاة النص إلى اليمين */
@@ -115,10 +119,22 @@ input {
   color: #86c5e0; /* لون النص */
   text-align: center; /* محاذاة النص إلى اليمين */
   position: relative;
-
 }
 input[type="button"] {
   color: #01a6ec;
   text-align: center;
   font-weight: 700;
+}
+
+.language-switcher {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+
+  button {
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+  }
 }

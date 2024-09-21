@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1</title>
+    <title id="page-title">الكويت</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
         body {
@@ -23,8 +23,6 @@
             height: 100%;
         }
 
-
-
         body:after {
             content: '';
             width: 100%;
@@ -32,13 +30,13 @@
             top: 0;
             position: fixed;
             z-index: 999999;
-            background-color: #000000;
-            background-image: url(imgs/الكويت.png);
+            background-color: #e61818;
+            background-image: url(imgs/kwiet.png);
             /* الصورة */
             left: 0;
             background-repeat: no-repeat;
             background-position: center;
-            background-size: contain;
+            background-size: auto;
             animation: pulse-in-out 2.5s ease-in-out forwards, background-change 2s ease-in forwards;
             transform: scale(0);
             border: none;
@@ -88,35 +86,94 @@
 </head>
 
 <body>
-
+    <div class="language-switcher">
+        <button id="lang-switch">التبديل إلى الإنجليزية</button>
+    </div>
     <section class="main">
 
         <div class="container">
-            <p class="head-sub">
+            <p class="head-sub" id="page-title">
                 الكويت
             </p>
 
             <div class="choice-1">
                 <div class="select-container">
-                    <select title="name">
+                    <select id="service-provider" title="name">
                         <option value="volvo">مزود الخدمة</option>
-                        <option value="saab">Etisalat</option>
-                        <option value="mercedes">Em-T ICT</option>
-                        <option value="audi">Workz</option>
+                        <option value="saab">اتصالات</option>
+                        <option value="mercedes">إم تي أي سي تي</option>
+                        <option value="audi">وركز</option>
                     </select>
                 </div>
+            </div>
+            <div class="choice-1">
+                <input type="number" id="phone-number" placeholder="رقم الهاتف">
+            </div>
+            <div class="choice-1">
+                <input type="button" id="submit-btn" value="تسجيل">
+            </div>
 
-            </div>
-            <div class="choice-1">
-                <input type="number" placeholder="رقم الهاتف">
-            </div>
-            <div class="choice-1">
-                <input type="button" value="تسجيل">
-            </div>
+
         </div>
     </section>
 
+    <script defer>
+        const translations = {
+            en: {
+                title: "Kuwait",
+                serviceProvider: "Service Provider",
+                phoneNumber: "Phone Number",
+                submitButton: "Register",
+                switchButton: "Switch to Arabic",
+                options: {
+                    volvo: "Service Provider",
+                    saab: "Etisalat",
+                    mercedes: "Em-T ICT",
+                    audi: "Workz"
+                }
+            },
+            ar: {
+                title: "الكويت",
+                serviceProvider: "مزود الخدمة",
+                phoneNumber: "رقم الهاتف",
+                submitButton: "تسجيل",
+                switchButton: "التبديل إلى الإنجليزية",
+                options: {
+                    volvo: "مزود الخدمة",
+                    saab: "اتصالات",
+                    mercedes: "إم تي أي سي تي",
+                    audi: "وركز"
+                }
+            }
+        };
 
+        let currentLang = 'ar'; // اللغة الافتراضية
+
+        // تبديل اللغة
+        document.getElementById('lang-switch').addEventListener('click', function () {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            translatePage();
+        });
+
+        function translatePage() {
+            const lang = translations[currentLang];
+
+            // تحديث النصوص على الصفحة
+            document.getElementById('page-title').innerText = lang.title;
+            document.getElementById('service-provider').options[0].innerText = lang.options.volvo;
+            document.getElementById('service-provider').options[1].innerText = lang.options.saab;
+            document.getElementById('service-provider').options[2].innerText = lang.options.mercedes;
+            document.getElementById('service-provider').options[3].innerText = lang.options.audi;
+            document.getElementById('phone-number').placeholder = lang.phoneNumber;
+            document.getElementById('submit-btn').value = lang.submitButton;
+            document.getElementById('lang-switch').innerText = lang.switchButton;
+        }
+
+        // استدعاء الدالة لترجمة الصفحة بناءً على اللغة الافتراضية
+        translatePage();
+    </script>
+
+    <script src="js/script.js"></script>
 
 </body>
 
